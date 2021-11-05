@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import React from 'react';
+import React, { useState } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -58,6 +58,15 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  
+
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [itemName, setItemName] = useState("");
+
+  function addItem () {
+    setIsSubmit(true);
+    setItemName("add");
+  }
 
   return (
     <View style={styles.container}>
@@ -74,27 +83,13 @@ const App: () => Node = () => {
       <TouchableOpacity>
         <Text style={styles.title2}>tag</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={addItem}>
+        <Text style={styles.title2}>Add</Text>
+      </TouchableOpacity>
     </View>
     <ScrollView>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
-      <Text style={styles.write}>bye</Text>
-      <Text style={styles.write}>hello</Text>
+       
+    {isSubmit && <Text style={styles.write}>{itemName}</Text>}
     </ScrollView>
     <View style={styles.menu}>
       <TouchableOpacity>
