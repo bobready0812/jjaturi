@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
- import { StatusBar } from "expo-status-bar";
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import React from 'react';
 import type {Node} from 'react';
 import {
@@ -61,7 +61,7 @@ const App: () => Node = () => {
 
   return (
     <View style={styles.container}>
-    <StatusBar style="auto" />
+    
     <View style={styles.nav}>
       <TouchableOpacity>
         <Text style={styles.title}>JJATURI</Text>
