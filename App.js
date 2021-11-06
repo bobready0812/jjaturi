@@ -5,6 +5,8 @@
  * @format
  * @flow strict-local
  */
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import React, { useState } from 'react';
 import type {Node} from 'react';
@@ -15,7 +17,8 @@ import {
   Text,
   useColorScheme,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
 
 import {
@@ -52,6 +55,30 @@ const Section = ({children, title}): Node => {
   );
 };
 
+
+
+
+const Stack = createNativeStackNavigator();
+
+
+const HomeScreen = ({navigation}) => {
+  return(
+   <View>
+     <Text>안녕</Text>
+     <Button onPress={() => navigation.navigate('addItem')}></Button>
+   </View>
+  )
+}
+
+const ProfileScreen = () => {
+  return(
+   <View>
+     <Text>프로필</Text>
+     
+   </View>
+  )
+}
+
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -69,40 +96,18 @@ const App: () => Node = () => {
   }
 
   return (
-    <View style={styles.container}>
-    
-    <View style={styles.nav}>
-      <TouchableOpacity>
-        <Text style={styles.title}>JJATURI</Text>
-      </TouchableOpacity>
+   <NavigationContainer>
+     <Stack.Navigator>  
+  <Stack.Screen name="Home"
+      component={HomeScreen}>     
+  </Stack.Screen> 
+  <Stack.Screen name="profile" component={ProfileScreen}>
 
-      <TouchableOpacity>
-        <Text style={styles.title2}>menu</Text>
-      </TouchableOpacity>
+  </Stack.Screen>
 
-      <TouchableOpacity>
-        <Text style={styles.title2}>tag</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={addItem}>
-        <Text style={styles.title2}>Add</Text>
-      </TouchableOpacity>
-    </View>
-    <ScrollView>
-       
-    {isSubmit && <Text style={styles.write}>{itemName}</Text>}
-    </ScrollView>
-    <View style={styles.menu}>
-      <TouchableOpacity>
-        <Text style={styles.btn}>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.btn}>Chat</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.btn}>User</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
+  </Stack.Navigator>
+ 
+  </NavigationContainer> 
   );
 };
 
