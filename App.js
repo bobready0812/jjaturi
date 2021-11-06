@@ -63,17 +63,49 @@ const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
   return(
-   <View>
-     <Text>안녕</Text>
-     <Button onPress={() => navigation.navigate('addItem')}></Button>
-   </View>
+    <View style={styles.container}>
+    
+    <View style={styles.nav}>
+      <TouchableOpacity>
+        <Text style={styles.title}>JJATURI</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Text style={styles.title2}>menu</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Text style={styles.title2}>tag</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('addItem')
+      }}>
+        <Text style={styles.title2}>Add</Text>
+      </TouchableOpacity>
+    </View>
+    <ScrollView>
+       
+    
+    </ScrollView>
+    <View style={styles.menu}>
+      <TouchableOpacity>
+        <Text style={styles.btn}>Home</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text style={styles.btn}>Chat</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text style={styles.btn}>User</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
   )
 }
 
-const ProfileScreen = () => {
+const addItems = () => {
   return(
    <View>
-     <Text>프로필</Text>
+     <Text>글추가</Text>
      
    </View>
   )
@@ -87,21 +119,18 @@ const App: () => Node = () => {
   };
   
 
-  const [isSubmit, setIsSubmit] = useState(false);
-  const [itemName, setItemName] = useState("");
 
-  function addItem () {
-    setIsSubmit(true);
-    setItemName("add");
-  }
+
 
   return (
    <NavigationContainer>
-     <Stack.Navigator>  
+     <Stack.Navigator   screenOptions={{
+    headerShown: false
+  }}>  
   <Stack.Screen name="Home"
       component={HomeScreen}>     
   </Stack.Screen> 
-  <Stack.Screen name="profile" component={ProfileScreen}>
+  <Stack.Screen name="addItem" component={addItems}>
 
   </Stack.Screen>
 
