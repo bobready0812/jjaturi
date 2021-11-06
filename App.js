@@ -8,6 +8,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState } from 'react';
 import type {Node} from 'react';
 import {
@@ -18,7 +19,9 @@ import {
   useColorScheme,
   View,
   TouchableOpacity,
-  Button
+  Button,
+  TextInput,
+  Alert
 } from 'react-native';
 
 import {
@@ -62,6 +65,12 @@ const Stack = createNativeStackNavigator();
 
 
 const HomeScreen = ({navigation}) => {
+
+
+  function showItems() {
+    const fromItem = AsyncStorage.getItem('@Item');
+    console.log(fromItem);
+  }
   return(
     <View style={styles.container}>
     
@@ -81,6 +90,9 @@ const HomeScreen = ({navigation}) => {
         navigation.navigate('addItem')
       }}>
         <Text style={styles.title2}>Add</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text onPress={showItems} style={styles.title2}>Re</Text>
       </TouchableOpacity>
     </View>
     <ScrollView>
@@ -102,14 +114,56 @@ const HomeScreen = ({navigation}) => {
   )
 }
 
-const addItems = () => {
+
+
+const addItems = ({navigation}) => {
+ const [name,setName] = useState("");
+ const [price, setPrice] = useState("");
+ const [content, setContent] = useState("");
+ const [sum, setSum]= useState({});
+ 
+
+function changeName (aName) {
+  setName(aName);
+}
+
+function changePrice (aPrice) {
+  setPrice(aPrice);
+}
+function changeContent (aContent) {
+  setContent(aContent);
+}
+
+function  setItems () {
+  setSum({name, price, content})
+  AsyncStorage.setItem('@Item', JSON.stringify(sum));
+  navigation.navigate('Home')
+}
+
   return(
    <View>
-     <Text>글추가</Text>
+     <View>
+      <Text>상품 이름</Text>
+      <TextInput onChangeText={changeName}></TextInput>
+     </View>
+     <View>
+      <Text>가격</Text>
+      <TextInput onChangeText={changePrice}></TextInput>
+     </View>
+     <View>
+      <Text>상품 설명</Text>
+      <TextInput multiline onChangeText={changeContent}></TextInput>
+     </View>
+     <View>
+       <Button onPress={setItems} title="완료"></Button>
+     </View>
      
    </View>
   )
 }
+
+
+
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -118,7 +172,7 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   
-
+  
 
 
 
