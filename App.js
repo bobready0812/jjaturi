@@ -100,8 +100,9 @@ const getItmes = async() => {
       </TouchableOpacity>
     </View>
     <ScrollView>
-       {isRefreshed && <View>
-   <Text style={styles.write}> {doneItem.name}, {doneItem.price} </Text>
+       {isRefreshed && <View style={styles.write}>
+   <Text style={styles.write2}> {doneItem.name} </Text>
+   <Text style={styles.write2}> {doneItem.price}</Text>
          </View>}
     
     </ScrollView>
@@ -244,12 +245,18 @@ const styles = StyleSheet.create({
     fontSize: 23,
   },
   write: {
-    fontSize: 50,
-    textAlign: "center",
-    flex: 1.3,
+    
+    alignItems: "center",
+    flex: 1.1,
     color: "#787878",
     backgroundColor: "#333333",
     margin: 2,
+  },
+  write2: {
+    fontSize: 40,
+   color: "#787878",
+   
+   
   },
 });
 
