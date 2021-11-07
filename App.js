@@ -66,11 +66,15 @@ const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
 
+const [doneItem, setDoneItem] = useState({});
+const [isRefreshed, setIsRefreshed] = useState(false);
 
-  function showItems() {
-    const fromItem = AsyncStorage.getItem('@Item');
-    console.log(fromItem);
-  }
+const getItmes = async() => {
+  const gotItem =await AsyncStorage.getItem('@item');
+  setDoneItem(JSON.parse(gotItem));
+  setIsRefreshed(true);
+}
+  
   return(
     <View style={styles.container}>
     
@@ -92,11 +96,13 @@ const HomeScreen = ({navigation}) => {
         <Text style={styles.title2}>Add</Text>
       </TouchableOpacity>
       <TouchableOpacity>
-        <Text onPress={showItems} style={styles.title2}>Re</Text>
+        <Text onPress={getItmes} style={styles.title2}>Re</Text>
       </TouchableOpacity>
     </View>
     <ScrollView>
-       
+       {isRefreshed && <View>
+   <Text style={styles.write}> {doneItem.name}, {doneItem.price} </Text>
+         </View>}
     
     </ScrollView>
     <View style={styles.menu}>
@@ -134,10 +140,15 @@ function changeContent (aContent) {
   setContent(aContent);
 }
 
-function  setItems () {
+const setItems = async() => {
   setSum({name, price, content})
-  AsyncStorage.setItem('@Item', JSON.stringify(sum));
-  navigation.navigate('Home')
+  console.log(sum)
+  await AsyncStorage.setItem('@item', JSON.stringify(sum));
+  
+}
+
+function back () {
+  navigation.navigate('Home');
 }
 
   return(
@@ -156,6 +167,7 @@ function  setItems () {
      </View>
      <View>
        <Button onPress={setItems} title="완료"></Button>
+       <Button onPress={back} title="돌아가기"></Button>
      </View>
      
    </View>
