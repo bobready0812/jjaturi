@@ -74,8 +74,6 @@ const getItmes = async() => {
   setDoneItem(JSON.parse(gotItem));
   setIsRefreshed(true);
 }
-
-
   
   return(
     <View style={styles.container}>
@@ -97,8 +95,9 @@ const getItmes = async() => {
       }}>
         <Text style={styles.title2}>Add</Text>
       </TouchableOpacity>
-      
-        
+      <TouchableOpacity>
+        <Text onPress={getItmes} style={styles.title2}>Re</Text>
+      </TouchableOpacity>
     </View>
     <ScrollView>
        {isRefreshed && <View style={styles.write}>
@@ -143,15 +142,15 @@ function changeContent (aContent) {
 }
 
 const setItems = async() => {
-  setSum({name, price, content})
-  console.log(sum)
-  await AsyncStorage.setItem('@item', JSON.stringify(sum));
-  
+  const newSum = {...sum, [Date.now()] : {name, price, content}}
+  setSum(newSum);
+
 }
 
-function back () {
+useEffect(() => {
   navigation.navigate('Home');
-}
+  console.log(sum);
+}, [sum]);
 
   return(
    <View>
@@ -169,7 +168,7 @@ function back () {
      </View>
      <View>
        <Button onPress={setItems} title="완료"></Button>
-       <Button onPress={back} title="돌아가기"></Button>
+       
      </View>
      
    </View>
