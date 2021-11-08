@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -73,7 +73,9 @@ const getItmes = async() => {
   const gotItem =await AsyncStorage.getItem('@item');
   setDoneItem(JSON.parse(gotItem));
   setIsRefreshed(true);
+  
 }
+
   
   return(
     <View style={styles.container}>
@@ -99,13 +101,13 @@ const getItmes = async() => {
         <Text onPress={getItmes} style={styles.title2}>Re</Text>
       </TouchableOpacity>
     </View>
-    <ScrollView>
-       {isRefreshed && <View style={styles.write}>
-   <Text style={styles.write2}> {doneItem.name} </Text>
-   <Text style={styles.write2}> {doneItem.price}</Text>
-         </View>}
-    
-    </ScrollView>
+    <View>
+    {isRefreshed && <ScrollView>
+      {Object.keys(doneItem).map( key =><View style={styles.write} key={key}>
+           <Text style={styles.write2}>{doneItem[key].name}</Text>
+      </View>)}
+      </ScrollView>}
+      </View>
     <View style={styles.menu}>
       <TouchableOpacity>
         <Text style={styles.btn}>Home</Text>
@@ -128,6 +130,7 @@ const addItems = ({navigation}) => {
  const [price, setPrice] = useState("");
  const [content, setContent] = useState("");
  const [sum, setSum]= useState({});
+ const sumRef = useRef(false);
  
 
 function changeName (aName) {
@@ -142,15 +145,22 @@ function changeContent (aContent) {
 }
 
 const setItems = async() => {
+  sumRef.current= true;
   const newSum = {...sum, [Date.now()] : {name, price, content}}
   setSum(newSum);
 
 }
 
 useEffect(() => {
-  navigation.navigate('Home');
-  console.log(sum);
+  if(sumRef.current) {
+    console.log(sum);
+    AsyncStorage.setItem('@item', JSON.stringify(sum));
+  }
 }, [sum]);
+
+const back = () => {
+  navigation.navigate('Home');
+}
 
   return(
    <View>
@@ -168,7 +178,9 @@ useEffect(() => {
      </View>
      <View>
        <Button onPress={setItems} title="완료"></Button>
-       
+       <TouchableOpacity onPress={back}>
+        <Text>돌아가기</Text>
+       </TouchableOpacity>
      </View>
      
    </View>
