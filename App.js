@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -74,6 +74,8 @@ const getItmes = async() => {
   setDoneItem(JSON.parse(gotItem));
   setIsRefreshed(true);
 }
+
+
   
   return(
     <View style={styles.container}>
@@ -95,9 +97,8 @@ const getItmes = async() => {
       }}>
         <Text style={styles.title2}>Add</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text onPress={getItmes} style={styles.title2}>Re</Text>
-      </TouchableOpacity>
+      
+        
     </View>
     <ScrollView>
        {isRefreshed && <View style={styles.write}>
