@@ -125,7 +125,7 @@ const getItmes = async() => {                            //AsyncStorage로 부�
 }
 
 
-
+//상품 추가하는 네비게이터
 const addItems = ({navigation}) => {
  const [name,setName] = useState("");
  const [price, setPrice] = useState("");
@@ -133,18 +133,20 @@ const addItems = ({navigation}) => {
  const [sum, setSum]= useState({});
  const sumRef = useRef(false);
  
-
+//상품 명 TextInput의 값이 바뀔때마다 state를 지정해줌
 function changeName (aName) {
   setName(aName);
 }
-
+//가격 TextInput의 값이 바뀔때마다 state를 지정해줌
 function changePrice (aPrice) {
   setPrice(aPrice);
 }
+//상품 설명 TextInput의 값이 바뀔때마다 state를 지정해줌
 function changeContent (aContent) {
   setContent(aContent);
 }
 
+//위 state들을 한 오브젝트 안에 넣어주는 함수
 const setItems = async() => {
   sumRef.current= true;
   const newSum = {...sum, [Date.now()] : {name, price, content}}
@@ -152,6 +154,8 @@ const setItems = async() => {
 
 }
 
+
+//sum 의 스테이트가 업데이트 되고 난 후 AsyncStorage에 데이터를 보낸다
 useEffect(() => {
   if(sumRef.current) {
     console.log(sum);
@@ -159,6 +163,7 @@ useEffect(() => {
   }
 }, [sum]);
 
+//홈 화면으로 돌아가게 하는 함수
 const back = () => {
   navigation.navigate('Home');
 }
