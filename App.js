@@ -132,6 +132,7 @@ const addItems = ({navigation}) => {
  const [content, setContent] = useState("");
  const [sum, setSum]= useState({});
  const sumRef = useRef(false);
+ const [once, setOnce] = useState("true");
  
 //상품 명 TextInput의 값이 바뀔때마다 state를 지정해줌
 function changeName (aName) {
@@ -148,9 +149,19 @@ function changeContent (aContent) {
 
 //위 state들을 한 오브젝트 안에 넣어주는 함수
 const setItems = async() => {
+  if(once) {
   sumRef.current= true;
-  const newSum = {...sum, [Date.now()] : {name, price, content}}
+  const newSum = {...sum, [Date.now()] : {name, price, content}};
   setSum(newSum);
+  setOnce(false);
+
+} 
+  else { 
+    const previous = JSON.parse(await AsyncStorage.getItem('@item'));
+    console.log(previous);
+
+    
+  }
 
 }
 
@@ -158,7 +169,7 @@ const setItems = async() => {
 //sum 의 스테이트가 업데이트 되고 난 후 AsyncStorage에 데이터를 보낸다
 useEffect(() => {
   if(sumRef.current) {
-    console.log(sum);
+    // console.log(sum);
     AsyncStorage.setItem('@item', JSON.stringify(sum));
   }
 }, [sum]);
