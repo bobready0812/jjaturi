@@ -63,15 +63,16 @@ const Section = ({children, title}): Node => {
 
 const Stack = createNativeStackNavigator();
 
-
+//홈 화면을 보여주는 네비게이터 
 const HomeScreen = ({navigation}) => {
 
-const [doneItem, setDoneItem] = useState({});
-const [isRefreshed, setIsRefreshed] = useState(false);
+const [doneItem, setDoneItem] = useState({}); //AsyncStorage로 부터 가져온 데이터를 Parse해서 넣어주는 state
+const [isRefreshed, setIsRefreshed] = useState(false); //새로 고침시 바뀌는 state
 
-const getItmes = async() => {
+
+const getItmes = async() => {                            //AsyncStorage로 부터 가져온 데이터를 Parse해서 doneItem에 넣어줌
   const gotItem =await AsyncStorage.getItem('@item');
-  setDoneItem(JSON.parse(gotItem));
+  setDoneItem(JSON.parse(gotItem));  
   setIsRefreshed(true);
   
 }
