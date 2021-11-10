@@ -62,7 +62,7 @@ const Section = ({children, title}): Node => {
 
 
 const Stack = createNativeStackNavigator();
-
+const once = true;
 //홈 화면을 보여주는 네비게이터 
 const HomeScreen = ({navigation}) => {
 
@@ -130,9 +130,8 @@ const addItems = ({navigation}) => {
  const [name,setName] = useState("");
  const [price, setPrice] = useState("");
  const [content, setContent] = useState("");
- const [sum, setSum]= useState({});
  const sumRef = useRef(false);
- const [once, setOnce] = useState("true");
+ const [sum,setSum] = useState({});
  
 //상품 명 TextInput의 값이 바뀔때마다 state를 지정해줌
 function changeName (aName) {
@@ -149,19 +148,17 @@ function changeContent (aContent) {
 
 //위 state들을 한 오브젝트 안에 넣어주는 함수
 const setItems = async() => {
-  if(once) {
+  
+
   sumRef.current= true;
   const newSum = {...sum, [Date.now()] : {name, price, content}};
   setSum(newSum);
-  setOnce(false);
+  once = false;
+ 
+ 
 
-} 
-  else { 
-    const previous = JSON.parse(await AsyncStorage.getItem('@item'));
-    console.log(previous);
-
-    
-  }
+  
+  
 
 }
 
