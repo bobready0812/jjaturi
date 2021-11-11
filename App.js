@@ -21,7 +21,10 @@ import {
   TouchableOpacity,
   Button,
   TextInput,
-  Alert
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView
 } from 'react-native';
 
 import {
@@ -85,8 +88,9 @@ const App: () => Node = () => {
 
 
   return (
-
+   
    <View style={{flex:1}}> 
+  
     <View style={styles.topBar}>
        <TouchableOpacity>
          <Text style={{fontSize:17,}}>취소</Text>
@@ -97,8 +101,11 @@ const App: () => Node = () => {
          <Text style={{fontSize:18, color:"white" , padding:2}}>완료</Text>
        </TouchableOpacity>
        </View>
+       
     </View>
+    
     <View style={styles.stuck2}></View>
+    
     <View style={styles.body}>
      <View style={styles.main}>
        <View style={styles.title}>
