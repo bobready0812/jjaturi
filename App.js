@@ -131,7 +131,7 @@ main:{
 },
 title: {
  flex:1,
- backgroundColor:"#fff", 
+ backgroundColor:"black", 
  borderTopLeftRadius:13,
  borderTopRightRadius:13,
 },
@@ -145,6 +145,7 @@ content : {
 },
 categories: {
   flex:1,
+  backgroundColor:"#fff",
 }
 
 
