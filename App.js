@@ -93,7 +93,7 @@ const App: () => Node = () => {
     <View style={styles.body}>
      <View style={styles.main}>
        <View style={styles.title}>
-
+        
        </View>
        <View style={styles.categories}>
 
@@ -130,21 +130,23 @@ main:{
  
 },
 title: {
- flex:1,
- backgroundColor:"black", 
+ flex:0.8,
+ backgroundColor:"#fcf4dd", 
  borderTopLeftRadius:13,
  borderTopRightRadius:13,
 },
 price: {
-  flex:1,
-  backgroundColor:"black",
+  flex:0.8,
+  backgroundColor:"#fcf4dd",
 },
 content : {
   flex:3,
   backgroundColor:"#fff",
+  borderBottomLeftRadius:13,
+  borderBottomRightRadius:13,
 },
 categories: {
-  flex:1,
+  flex:0.8,
   backgroundColor:"#fff",
 }
 
