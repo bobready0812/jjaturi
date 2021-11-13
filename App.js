@@ -35,38 +35,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
-
-
-
-
-
-
-
 
 
   
@@ -96,7 +64,7 @@ const App: () => Node = () => {
          <Text style={{fontSize:17,}}>취소</Text>
        </TouchableOpacity>
        <Text style={{fontSize:17}}>상품 올리기</Text>
-       <View style={{backgroundColor:"#2a9df4", paddingHorizontal:8, paddingVertical:0.5, borderRadius:20}}>
+       <View style={{backgroundColor:"#489CCB", paddingHorizontal:8, paddingVertical:0.5, borderRadius:20}}>
        <TouchableOpacity>
          <Text style={{fontSize:18, color:"white" , padding:2}}>완료</Text>
        </TouchableOpacity>
