@@ -74,6 +74,7 @@ const App: () => Node = () => {
     
     <View style={styles.stuck2}></View>
     
+    <KeyboardAvoidingView behavior="position">
     <View style={styles.body}>
      <View style={styles.main}>
        <View style={styles.title}>
@@ -93,6 +94,7 @@ const App: () => Node = () => {
        </View>
      </View>
     </View>
+    </KeyboardAvoidingView>
     
   </View>
   );
