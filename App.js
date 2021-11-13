@@ -24,7 +24,8 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 
 import {
@@ -74,6 +75,11 @@ const App: () => Node = () => {
     
     <View style={styles.stuck2}></View>
     
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "android" ? "padding" : "height"}
+      style={styles.container}
+    >
+
     <View style={styles.body}>
      <View style={styles.main}>
        <View style={styles.title}>
@@ -94,6 +100,7 @@ const App: () => Node = () => {
      </View>
     </View>
     
+  </KeyboardAvoidingView>
   </View>
   );
 };
