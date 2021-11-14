@@ -53,11 +53,7 @@ const App: () => Node = () => {
   };
   
   
-  _scrollToInput = (reactNode) => {
-    // Add a 'scroll' ref to your ScrollView
-    this.scroll.props.scrollToFocusedInput(reactNode);
-  }
-
+ 
 
   return (
    
@@ -77,46 +73,22 @@ const App: () => Node = () => {
     </View>
     
     <View style={styles.stuck2}></View>
-    
-   
+    <View style={styles.body}>
+     <KeyboardAvoidingView style={styles.main}>
+         <TextInput placeholder="제목" style={styles.title}></TextInput>
+         <View style={styles.categories}>
+           <Text>카테고리</Text>
+         </View>
+         <TextInput placeholder="가격 입력" style={styles.price}></TextInput>
+         <TextInput placeholder="본문내용 입력" style={styles.content}></TextInput>
+          
+        
+     </KeyboardAvoidingView>
 
-    {/* <View style={styles.body}>
-     <View style={styles.main}>
-       <View style={styles.title}>
-         <TextInput style={{fontSize:18,}} placeholder="제목"></TextInput>
-       </View>
-       <View style={styles.stuck}></View>
-       <View style={styles.categories}>
-          <Text style={{fontSize:20,}}>카테고리 설정</Text>
-       </View>
-       <View style={styles.stuck}></View>
-       <View style={styles.price}>
-          <TextInput style={{fontSize:18,}} placeholder="가격 입력  ₩"></TextInput>
-       </View>
-       <View style={styles.stuck}></View>
-       <View style={styles.content}>
-           <TextInput style={{fontSize:18,}} multiline placeholder="본문내용  입력"></TextInput>
-       </View>
-     </View>
     </View>
-     */}
-
-<KeyboardAwareScrollView
-  innerRef={ref => {
-    this.scroll = ref
-  }}>
-  <View>
-    <TextInput
-      onFocus={(event: Event) => {
-        // `bind` the function if you're using ES6 classes
-        this._scrollToInput(ReactNative.findNodeHandle(event.target))
-      }}
-    />
-  </View>
-</KeyboardAwareScrollView>
-  
-  </View>
-  );
+    
+   </View>
+)
 };
 
 const styles = StyleSheet.create({
@@ -145,7 +117,7 @@ main:{
 },
 title: {
  flex:0.8,
-  
+ 
  borderTopLeftRadius:13,
  borderTopRightRadius:13,
  justifyContent:"center",
