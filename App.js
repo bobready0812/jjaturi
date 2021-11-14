@@ -38,7 +38,7 @@ import {
 
 
 
-  
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
   
 
 
@@ -53,7 +53,10 @@ const App: () => Node = () => {
   };
   
   
-
+  _scrollToInput = (reactNode) => {
+    // Add a 'scroll' ref to your ScrollView
+    this.scroll.props.scrollToFocusedInput(reactNode);
+  }
 
 
   return (
@@ -75,12 +78,9 @@ const App: () => Node = () => {
     
     <View style={styles.stuck2}></View>
     
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "android" ? "padding" : "height"}
-      style={styles.container}
-    >
+   
 
-    <View style={styles.body}>
+    {/* <View style={styles.body}>
      <View style={styles.main}>
        <View style={styles.title}>
          <TextInput style={{fontSize:18,}} placeholder="제목"></TextInput>
@@ -99,8 +99,22 @@ const App: () => Node = () => {
        </View>
      </View>
     </View>
-    
-  </KeyboardAvoidingView>
+     */}
+
+<KeyboardAwareScrollView
+  innerRef={ref => {
+    this.scroll = ref
+  }}>
+  <View>
+    <TextInput
+      onFocus={(event: Event) => {
+        // `bind` the function if you're using ES6 classes
+        this._scrollToInput(ReactNative.findNodeHandle(event.target))
+      }}
+    />
+  </View>
+</KeyboardAwareScrollView>
+  
   </View>
   );
 };
