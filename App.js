@@ -57,13 +57,23 @@ const App: () => Node = () => {
 
 
   return (
-  
+    <SafeAreaView style={styles.container}>
+      <View style={{justifyContent: "flex-start"}}>
+
+      </View>
+    </SafeAreaView>
  
  
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex:1,
+    backgroundColor: '#5359D1',
+    alignItems: 'center',
+    justifyContent: "center",
+  }
 
 });
 
