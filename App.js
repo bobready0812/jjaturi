@@ -25,7 +25,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  Image
 } from 'react-native'; 
 
 import {
@@ -35,6 +36,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+imp
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -59,7 +61,7 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{justifyContent: "flex-start"}}>
-
+       <Image source={profile} 
       </View>
     </SafeAreaView>
  
