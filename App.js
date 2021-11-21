@@ -61,7 +61,7 @@ const App: () => Node = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={{justifyContent: "flex-start"}}>
-       <Image source={profile} 
+       <Image source={profile}></Image>
       </View>
     </SafeAreaView>
  
