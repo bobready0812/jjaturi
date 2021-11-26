@@ -40,7 +40,7 @@ imp
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-  
+ import profile from './assets/피카츄.jpg'; 
   
 
 
