@@ -60,12 +60,20 @@ const App: () => Node = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{justifyContent: "flex-start"}}>
+      <View style={{justifyContent: "flex-start", padding:20,}}>
        <Image source={profile} style={{
          width: 60,
          height: 60,
-         borderRadius: 10
+         borderRadius: 10,
+         marginTop: 8
        }}></Image>
+       <Text style={{
+         fontSize:20,
+         fontWeight: 'bold',
+         color:'white',
+       }}>
+         피카츄
+       </Text>
       </View>
     </SafeAreaView>
  
