@@ -71,9 +71,16 @@ const App: () => Node = () => {
          fontSize:20,
          fontWeight: 'bold',
          color:'white',
+         marginTop:20
        }}>
          피카츄
        </Text>
+       <TouchableOpacity>
+         <Text style={{
+           marginTop: 6,
+           color: 'white,'
+         }}>프로필 보기</Text>
+       </TouchableOpacity>
       </View>
     </SafeAreaView>
  
