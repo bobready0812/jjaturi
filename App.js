@@ -80,7 +80,11 @@ const App: () => Node = () => {
            marginTop: 6,
            color: 'white,'
          }}>프로필 보기</Text>
+        <Text>안녕하세요</Text>
        </TouchableOpacity>
+        <ScrollView>
+          
+        </ScrollView>
       </View>
     </SafeAreaView>
  
