@@ -71,7 +71,8 @@ const App: () => Node = () => {
          fontSize:20,
          fontWeight: 'bold',
          color:'white',
-         marginTop:20
+         marginTop:20,
+         padding: 20,
        }}>
          피카츄
        </Text>
@@ -80,11 +81,7 @@ const App: () => Node = () => {
            marginTop: 6,
            color: 'white,'
          }}>프로필 보기</Text>
-        <Text>안녕하세요</Text>
-       </TouchableOpacity>
-        <ScrollView>
-          
-        </ScrollView>
+       
       </View>
     </SafeAreaView>
  
