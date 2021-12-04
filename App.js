@@ -72,7 +72,7 @@ const App: () => Node = () => {
          fontWeight: 'bold',
          color:'white',
          marginTop:20,
-         padding: 20,
+         paddingTop: 20,
        }}>
          피카츄
        </Text>
