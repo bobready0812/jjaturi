@@ -71,10 +71,9 @@ const App: () => Node = () => {
          fontSize:20,
          fontWeight: 'bold',
          color:'white',
-         marginTop:20,
-         paddingTop: 20,
+         
        }}>
-         피카츄
+         피카츄 프로필
        </Text>
        <TouchableOpacity>
          <Text style={{
