@@ -67,19 +67,7 @@ const App: () => Node = () => {
          borderRadius: 10,
          marginTop: 8
        }}></Image>
-       <Text style={{
-         fontSize:20,
-         fontWeight: 'bold',
-         color:'white',
-         
-       }}>
-         피카츄 프로필
-       </Text>
-       <TouchableOpacity>
-         <Text style={{
-           marginTop: 6,
-           color: 'white,'
-         }}>프로필 보기</Text>
+       <Text>프로필 네임</Text>
        
       </View>
     </SafeAreaView>
