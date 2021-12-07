@@ -59,30 +59,21 @@ const App: () => Node = () => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{justifyContent: "flex-start", padding:20,}}>
-       <Image source={profile} style={{
-         width: 60,
-         height: 60,
-         borderRadius: 10,
-         marginTop: 8
-       }}></Image>
-       <Text>프로필 네임</Text>
-       
-      </View>
-    </SafeAreaView>
- 
+    <TouchableOpacity>
+      <Text style={styles.text1}>
+        안녕하세요
+      </Text>
+    </TouchableOpacity>
  
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: '#5359D1',
-    alignItems: 'center',
-    justifyContent: "center",
-  }
+ text1: {
+   fontSize:20,
+   color: "red",
+   fontWeight:"500",
+ }
 
 });
 
