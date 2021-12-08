@@ -55,11 +55,13 @@ const App: () => Node = () => {
   };
   
   
-
+  const handlePress = () => {
+    console.log("hello");
+  }
 
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={handlePress}>
       <Text style={styles.text1}>
         안녕하세요
       </Text>
