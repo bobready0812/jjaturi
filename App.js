@@ -54,6 +54,7 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   
+  const [name,setName] = useState("");
   
   const handlePress = () => {
     console.log("hello");
@@ -61,12 +62,18 @@ const App: () => Node = () => {
 
 
   return (
+    <>
     <TouchableOpacity onPress={handlePress}>
       <Text style={styles.text1}>
         안녕하세요
       </Text>
     </TouchableOpacity>
- 
+    <TouchableOpacity>
+      <Text>
+        제이름은: {name};
+      </Text>
+    </TouchableOpacity>
+    </>
   );
 };
 
