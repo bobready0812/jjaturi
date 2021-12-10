@@ -57,7 +57,7 @@ const App: () => Node = () => {
   const [name,setName] = useState("");
   
   const handlePress = () => {
-    console.log("hello");
+    setName("김대현")
   }
 
 
