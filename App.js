@@ -57,7 +57,11 @@ const App: () => Node = () => {
   const [name,setName] = useState("");
   
   const handlePress = () => {
-    setName("김대현")
+    if(name === "" ) {
+      setName("김대현")
+    } else {
+      setName("");
+    }
   }
 
 
