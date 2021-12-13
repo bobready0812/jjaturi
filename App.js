@@ -55,6 +55,7 @@ const App: () => Node = () => {
   };
   
   const [name,setName] = useState("");
+  const [isClicked,setIsClicked] = useState("false")
   
   const handlePress = () => {
     if(name === "" ) {
@@ -64,6 +65,9 @@ const App: () => Node = () => {
     }
   }
 
+  const handlePress2 = () => {
+   setIsClicked(true);
+  }
 
   return (
     <>
@@ -72,8 +76,8 @@ const App: () => Node = () => {
         안녕하세요
       </Text>
     </TouchableOpacity>
-    <TouchableOpacity>
-      <Text>
+    <TouchableOpacity onPress={handlePress2}}>
+      <Text style={!isClicked? {color:"red"} : {color:green} }>
         제이름은: {name};
       </Text>
     </TouchableOpacity>
