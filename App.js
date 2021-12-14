@@ -77,7 +77,7 @@ const App: () => Node = () => {
       </Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={handlePress2}}>
-      <Text style={!isClicked? {color:"red"} : {color:green} }>
+      <Text style={!isClicked? styles.text2 : styles.text3}>
         제이름은: {name};
       </Text>
     </TouchableOpacity>
@@ -90,6 +90,13 @@ const styles = StyleSheet.create({
    fontSize:20,
    color: "red",
    fontWeight:"500",
+ },
+ text2: {
+   color:"red"
+
+ },
+ text3 {
+   color:"green"
  }
 
 });
