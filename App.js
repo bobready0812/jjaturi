@@ -59,7 +59,7 @@ const App: () => Node = () => {
   
   const handlePress = () => {
     if(name === "" ) {
-      setName("김대현")
+      setName("Done!")
     } else {
       setName("");
     }
@@ -78,7 +78,7 @@ const App: () => Node = () => {
     </TouchableOpacity>
     <TouchableOpacity onPress={handlePress2}}>
       <Text style={!isClicked? styles.text2 : styles.text3}>
-        제이름은: {name};
+        Your test: {name};
       </Text>
     </TouchableOpacity>
     </>
