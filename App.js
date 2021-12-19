@@ -57,22 +57,40 @@ const App: () => Node = () => {
  const [views1, setViews1] = useState(0);
  const [views2, setViews2] = useState(0);
  const [views3, setViews3] = useState(0);
+ const [isOver1,setIsOver1] = useState(false);
+ const [isOver2,setIsOver2] = useState(false);
+ const [isOver3,setIsOver3] = useState(false);
  const [good1, setGood1] = useState(0);
  const [good2, setGood2] = useState(0);
  const [good3, setGood3] = useState(0);
 
  const handlePress1 = () => {
    setGood1(good1 +1 )
+   if(good1 > 1) {
+     setIsOver1(true);
+   } else {
+     setIsOver1(false)
+    }
  }
  
  
  const handlePress2 = () => {
   setGood2(good2 +1 )
+  if(good2 > 1) {
+    setIsOver2(true);
+  } else {
+    setIsOver2(false)
+   }
 }
  
 
 const handlePress3 = () => {
   setGood3(good3 +1 )
+  if(good3 > 1) {
+    setIsOver3(true);
+  } else {
+    setIsOver3(false)
+   }
 }
 
 const viewPress1 = () => {
@@ -94,7 +112,7 @@ const viewPress3 = () => {
   <View style={{flex:1}}>
     
     
-    <View style={{flex:1, backgroundColor:"#5DB3F0"}}>
+    <View style={!isOver1? styles.view1a:styles.view1}>
       <TouchableOpacity onPress={viewPress1}>
         <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views1} </Text>
       </TouchableOpacity>  
@@ -103,7 +121,7 @@ const viewPress3 = () => {
           <Text>🧡</Text>
         </TouchableOpacity>
     </View>
-    <View style={{flex:1, backgroundColor:"#61E2FA"}}>
+    <View style={!isOver2? styles.view2a:styles.view2}>
     <TouchableOpacity onPress={viewPress2}>
         <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views2} </Text>
     </TouchableOpacity> 
@@ -112,7 +130,7 @@ const viewPress3 = () => {
           <Text>🧡</Text>
         </TouchableOpacity>
     </View>
-    <View style={{flex:1, backgroundColor:"#64E3D4"}}>
+    <View style={!isOver3? styles.view3a:styles.view3}>
     <TouchableOpacity onPress={viewPress3}>
         <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views3} </Text>
     </TouchableOpacity> 
@@ -126,6 +144,12 @@ const viewPress3 = () => {
 };
 
 const styles = StyleSheet.create({
+ view1: {flex:1, backgroundColor:"#5DB3F0"},
+ view1a: {flex:1, backgroundColor:"black"},
+ view2:{flex:1, backgroundColor:"#61E2FA"},
+ view2a:{flex:1, backgroundColor:"black"},
+ view3:{flex:1, backgroundColor:"#64E3D4"},
+ view3a:{flex:1, backgroundColor:"black"},
  text1: {
    fontSize:20,
    color: "red",
