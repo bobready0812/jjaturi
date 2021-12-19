@@ -63,34 +63,52 @@ const App: () => Node = () => {
  const [good1, setGood1] = useState(0);
  const [good2, setGood2] = useState(0);
  const [good3, setGood3] = useState(0);
+ 
 
- const handlePress1 = () => {
-   setGood1(good1 +1 )
-   if(good1 > 1) {
-     setIsOver1(true);
-   } else {
-     setIsOver1(false)
-    }
- }
- 
- 
- const handlePress2 = () => {
-  setGood2(good2 +1 )
+useEffect(() => {
+  setGood1(good1)
+  if(good1 > 1) {
+    setIsOver1(true);
+  } else {
+    setIsOver1(false)
+   }
+  
+}, [good1])
+
+useEffect(() => {
+  setGood2(good2)
   if(good2 > 1) {
     setIsOver2(true);
   } else {
     setIsOver2(false)
    }
-}
- 
+}, [good2])
 
-const handlePress3 = () => {
-  setGood3(good3 +1 )
+useEffect(() => {
+  setGood3(good3)
   if(good3 > 1) {
     setIsOver3(true);
   } else {
     setIsOver3(false)
    }
+}, [good3])
+
+ const handlePress1 = () => {
+   setGood1(good1 +1 )
+   
+ }
+ 
+ 
+ 
+ const handlePress2 = () => {
+  setGood2(good2 +1 )
+  
+}
+ 
+
+const handlePress3 = () => {
+  setGood3(good3 +1 )
+  
 }
 
 const viewPress1 = () => {
