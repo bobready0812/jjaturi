@@ -36,7 +36,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-imp
+
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -53,35 +53,75 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
-  
-  const [name,setName] = useState("");
-  const [isClicked,setIsClicked] = useState("false")
-  
-  const handlePress = () => {
-    if(name === "" ) {
-      setName("Done!")
-    } else {
-      setName("");
-    }
-  }
+ 
+ const [views1, setViews1] = useState(0);
+ const [views2, setViews2] = useState(0);
+ const [views3, setViews3] = useState(0);
+ const [good1, setGood1] = useState(0);
+ const [good2, setGood2] = useState(0);
+ const [good3, setGood3] = useState(0);
 
-  const handlePress2 = () => {
-   setIsClicked(true);
-  }
+ const handlePress1 = () => {
+   setGood1(good1 +1 )
+ }
+ 
+ 
+ const handlePress2 = () => {
+  setGood2(good2 +1 )
+}
+ 
+
+const handlePress3 = () => {
+  setGood3(good3 +1 )
+}
+
+const viewPress1 = () => {
+  setViews1(views1 +1 )
+}
+
+
+const viewPress2 = () => {
+ setViews2(views2 +1 )
+}
+
+
+const viewPress3 = () => {
+ setViews3(views3 +1 )
+}
 
   return (
-    <>
-    <TouchableOpacity onPress={handlePress}>
-      <Text style={styles.text1}>
-        안녕하세요
-      </Text>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={handlePress2}}>
-      <Text style={!isClicked? styles.text2 : styles.text3}>
-        Your test: {name};
-      </Text>
-    </TouchableOpacity>
-    </>
+   
+  <View style={{flex:1}}>
+    
+    
+    <View style={{flex:1, backgroundColor:"#5DB3F0"}}>
+      <TouchableOpacity onPress={viewPress1}>
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views1} </Text>
+      </TouchableOpacity>  
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>좋아요:{good1} </Text>
+        <TouchableOpacity onPress={handlePress1}>
+          <Text>🧡</Text>
+        </TouchableOpacity>
+    </View>
+    <View style={{flex:1, backgroundColor:"#61E2FA"}}>
+    <TouchableOpacity onPress={viewPress2}>
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views2} </Text>
+    </TouchableOpacity> 
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>좋아요:{good2} </Text>
+        <TouchableOpacity onPress={handlePress2}>
+          <Text>🧡</Text>
+        </TouchableOpacity>
+    </View>
+    <View style={{flex:1, backgroundColor:"#64E3D4"}}>
+    <TouchableOpacity onPress={viewPress3}>
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views3} </Text>
+    </TouchableOpacity> 
+        <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>좋아요:{good3} </Text>
+        <TouchableOpacity onPress={handlePress3}>
+          <Text>🧡</Text>
+        </TouchableOpacity>
+    </View>
+  </View>
   );
 };
 
@@ -92,10 +132,9 @@ const styles = StyleSheet.create({
    fontWeight:"500",
  },
  text2: {
-   color:"red"
 
  },
- text3 {
+ text3: {
    color:"green"
  }
 
