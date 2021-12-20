@@ -72,7 +72,7 @@ const [average, setAverage] = useState();
 
 
 // 사용자가 처음으로 들어간 상품인지 알려주는 스테이트 처음값 true
-const [isFirst1, setIsFirst] = useState(true);
+const [isFirst1, setIsFirst1] = useState(true);
 const [isFirst2, setIsFirst2] = useState(true);
 const [isFirst3, setIsFirst3] = useState(true);
 
@@ -132,6 +132,7 @@ useEffect(() => {
 }, [good3])
 
  const handlePress1 = () => {
+   
    setGood1(good1 +1 )
    
  }
@@ -150,17 +151,25 @@ const handlePress3 = () => {
 }
 
 const viewPress1 = () => {
-  setViews1(views1 +1 )
+  if(isFirst1 === true) {
+  setViews1(views1 +1 );
+  setIsFirst1(false);
+  } else null;
 }
 
 
 const viewPress2 = () => {
- setViews2(views2 +1 )
+  if(isFirst2 === true) {
+  setViews2(views2 +1 );
+  setIsFirst3(false);
+  } else null;
 }
 
-
 const viewPress3 = () => {
- setViews3(views3 +1 )
+  if(isFirst3 === true) {
+  setViews3(views3 +1 );
+  setIsFirst3(false);
+  } else null;
 }
 
   return (
