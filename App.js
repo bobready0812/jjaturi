@@ -57,40 +57,78 @@ const App: () => Node = () => {
  const [views1, setViews1] = useState(0);
  const [views2, setViews2] = useState(0);
  const [views3, setViews3] = useState(0);
- const [isOver1,setIsOver1] = useState(false);
- const [isOver2,setIsOver2] = useState(false);
- const [isOver3,setIsOver3] = useState(false);
+
  const [good1, setGood1] = useState(0);
  const [good2, setGood2] = useState(0);
  const [good3, setGood3] = useState(0);
+const [average, setAverage] = useState();
+
+//  이부분은 오브젝트의 데이터로 정리될 state들
+
+// 평균 값을 넘어갔는 알려주는 state 초기값 false
+ const [isOver1,setIsOver1] = useState(false);
+ const [isOver2,setIsOver2] = useState(false);
+ const [isOver3,setIsOver3] = useState(false);
+
+
+// 사용자가 처음으로 들어간 상품인지 알려주는 스테이트 처음값 true
+const [isFirst1, setIsFirst] = useState(true);
+const [isFirst2, setIsFirst2] = useState(true);
+const [isFirst3, setIsFirst3] = useState(true);
+
+ 
+ 
  
 
 useEffect(() => {
-  setGood1(good1)
-  if(good1 > 1) {
-    setIsOver1(true);
+  if(good1 > average) {
+    setIsOver1(true)
   } else {
     setIsOver1(false)
-   }
-  
+  }
+}, [average])
+
+useEffect(() => {
+  if(good2 > average) {
+    setIsOver2(true)
+  } else {
+    setIsOver2(false)
+  }
+}, [average])
+
+useEffect(() => {
+  if(good3 > average) {
+    setIsOver3(true)
+  } else {
+    setIsOver3(false)
+  }
+}, [average])
+ 
+
+useEffect(() => {
+  setGood1(good1);
+  setGood2(good2);
+  setGood3(good3);
+  let a = (good1 + good2 + good3) / 3;
+  setAverage(a);
 }, [good1])
 
 useEffect(() => {
-  setGood2(good2)
-  if(good2 > 1) {
-    setIsOver2(true);
-  } else {
-    setIsOver2(false)
-   }
+  setGood1(good1);
+  setGood2(good2);
+  setGood3(good3);
+  let a = (good1 + good2 + good3) / 3;
+  setAverage(a);
+ 
 }, [good2])
 
 useEffect(() => {
-  setGood3(good3)
-  if(good3 > 1) {
-    setIsOver3(true);
-  } else {
-    setIsOver3(false)
-   }
+  setGood1(good1);
+  setGood2(good2);
+  setGood3(good3);
+  let a = (good1 + good2 + good3) / 3;
+  setAverage(a);
+  
 }, [good3])
 
  const handlePress1 = () => {
