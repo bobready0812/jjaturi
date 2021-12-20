@@ -161,13 +161,13 @@ const viewPress1 = () => {
 const viewPress2 = () => {
   if(isFirst2 === true) {
   setViews2(views2 +1 );
-  setIsFirst3(false);
+  setIsFirst2(false);
   } else null;
 }
 
 const viewPress3 = () => {
   if(isFirst3 === true) {
-  setViews3(views3 +1 );
+  setViews3(views3 + 1 );
   setIsFirst3(false);
   } else null;
 }
