@@ -176,7 +176,16 @@ const viewPress3 = () => {
    
   <View style={{flex:1}}>
     
-    
+    <View style={{flex:0.1, backgroundColor:"skyblue", flexDirection:"row"}}>
+      <TouchableOpacity>
+        <Text>카테고리1</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>카테고리2</Text>
+      </TouchableOpacity><TouchableOpacity>
+        <Text>카테고리3</Text>
+      </TouchableOpacity>
+    </View>
     <View style={!isOver1? styles.view1a:styles.view1}>
       <TouchableOpacity onPress={viewPress1}>
         <Text style={{fontSize:20,color:"white", fontWeight:"400"}}>조회수:{views1} </Text>
