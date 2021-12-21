@@ -59,29 +59,54 @@ const data = {
   "1" : {
     title: "product1",
     categories:"paint",
-    prixe:2000
+    price:2000
   },
   "2" : {
     title: "product2",
     categories:"sofa",
-    prixe:10000
+    price:10000
   },
   "3" : {
     title: "product3",
     categories:"wallpaper",
-    prixe:20000
+    price:20000
   }, 
 }
 
 
 
   return (
-   <View></View>
+   Object.keys(data).map((key) => {return(
+     <View key={key} style={styles.container}>
+     <View style={styles.product}>
+       <Text style={{color:"black"}}>{data[key].title}</Text>
+       <Text style={{color:"black"}}>{data[key].categories}</Text>
+       <Text style={{color:"black"}}>{data[key].price}</Text>
+     </View>
+     <View style={styles.stuck}>
+      
+     </View>
+     </View>
+   )} )
   
   );
 };
 
 const styles = StyleSheet.create({
+container:{
+  flex:1,
+},
+stuck:{
+backgroundColor:"grey",
+flex:0.01
+},
+ 
+ product: {
+ flex:1,
+ backgroundColor:"#FFF",
+ alignItems:"center",
+ justifyContent:"center"
+ }
 
 });
 
