@@ -76,6 +76,12 @@ const [isFirst1, setIsFirst1] = useState(true);
 const [isFirst2, setIsFirst2] = useState(true);
 const [isFirst3, setIsFirst3] = useState(true);
 
+// 카테고리를 임의로 지정해주는 state
+const [cate1, setCate1] = useState("cate1");
+const [cate2, setCate2] = useState("cate2");
+const [cate3, setCate3] = useState("cate3");
+
+
  
  
  
@@ -176,7 +182,7 @@ const viewPress3 = () => {
    
   <View style={{flex:1}}>
     
-    <View style={{flex:0.1, backgroundColor:"skyblue", flexDirection:"row"}}>
+    <View style={{flex:0.1, backgroundColor:"skyblue", flexDirection:"row", alignItems:"center", justifyContent:"space-around"}}>
       <TouchableOpacity>
         <Text>카테고리1</Text>
       </TouchableOpacity>
