@@ -38,24 +38,15 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
  import profile from './assets/피카츄.jpg'; 
   
 
+ const Stack = createNativeStackNavigator();
 
 
-
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-  
-
-const data = {
+ const data = {
   "1" : {
     title: "product1",
     categories:"paint",
@@ -73,21 +64,87 @@ const data = {
   }, 
 }
 
+ const HomeScreen = ({navigation}) => {
+   return(
+     <View>
+    <TouchableOpacity onPress={() => navigation.navigate('Product1')}>
+       <Text>상품1</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('Product2')}>
+    <Text>상품2</Text>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('Product3')}>
+    <Text>상품3</Text>
+    </TouchableOpacity>
+    </View>
+   )
+ }
+
+ const Product1 = ({navigation}) => {
+   return(
+     <View>
+       <Text>안녕1</Text>
+     </View>
+   )
+ }
+ const Product2 = ({navigation}) => {
+  return(
+    <View>
+      <Text>안녕2</Text>
+    </View>
+  )
+}
+const Product3 = ({navigation}) => {
+  return(
+    <View>
+      <Text>안녕3</Text>
+    </View>
+  )
+}
+
+
+
+const App: () => Node = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+  
+
+
+
 
 
   return (
-   Object.keys(data).map((key) => {return(
-     <View key={key} style={styles.container}>
-     <View style={styles.product}>
-       <Text style={{color:"black"}}>{data[key].title}</Text>
-       <Text style={{color:"black"}}>{data[key].categories}</Text>
-       <Text style={{color:"black"}}>{data[key].price}</Text>
-     </View>
-     <View style={styles.stuck}>
-      
-     </View>
-     </View>
-   )} )
+   <NavigationContainer>
+     <Stack.Navigator>
+       
+       <Stack.Screen 
+       name="home"
+       component={HomeScreen}
+       options={{headerShown: false}}
+       />
+        <Stack.Screen 
+       name="Product1"
+       component={Product1}
+       options={{headerShown: false}}
+       />
+       
+       <Stack.Screen 
+       name="Product2"
+       component={Product2}
+       options={{headerShown: false}}
+       />
+        <Stack.Screen 
+       name="Product3"
+       component={Product3}
+       options={{headerShown: false}}
+       />
+       
+       
+     </Stack.Navigator>
+   </NavigationContainer>
   
   );
 };
