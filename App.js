@@ -185,7 +185,7 @@ const viewPress3 = () => {
   <View style={{flex:1}}>
     
     <View style={{flex:0.1, backgroundColor:"skyblue", flexDirection:"row", alignItems:"center", justifyContent:"space-around"}}>
-      <TouchableOpacity onPress={handleCate}>
+      <TouchableOpacity>
         <Text>카테고리1</Text>
       </TouchableOpacity>
       <TouchableOpacity>
