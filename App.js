@@ -46,59 +46,106 @@ import {
  const Stack = createNativeStackNavigator();
 
 
- const data = {
-  "1" : {
+ const data = [
+  {
     title: "product1",
     categories:"paint",
     price:2000
   },
-  "2" : {
+  {
+    title: "product10",
+    categories:"paint",
+    price:2000
+  },
+  
+
+  {
     title: "product2",
     categories:"sofa",
     price:10000
-  },
-  "3" : {
+  } ,
+  {
+    title: "product12",
+    categories:"sofa",
+    price:10000
+  } ,
+   {
     title: "product3",
     categories:"wallpaper",
     price:20000
-  }, 
-}
+  ,},
+  {
+    title: "product20",
+    categories:"wallpaper",
+    price:20000
+  ,}]
+
 
  const HomeScreen = ({navigation}) => {
    return(
      <View>
-    <TouchableOpacity onPress={() => navigation.navigate('Product1')}>
-       <Text>상품1</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Paint')}>
+       <Text>페인트</Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('Product2')}>
-    <Text>상품2</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('Sofa')}>
+    <Text>소파</Text>
     </TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('Product3')}>
-    <Text>상품3</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('WallPaper')}>
+    <Text>벽지</Text>
     </TouchableOpacity>
     </View>
    )
  }
 
- const Product1 = ({navigation}) => {
-   return(
-     <View>
-       <Text>안녕1</Text>
-     </View>
-   )
- }
- const Product2 = ({navigation}) => {
+ const  Paint = ({navigation}) => {
+
+  const dataRe1  = data.filter(function(item) {
+    return item.categories == "paint";
+  });
+  
   return(
-    <View>
-      <Text>안녕2</Text>
-    </View>
+    dataRe1.map( (obj) => {
+      return <View key={obj.title}>
+        <Text style={{color:"black"}}>{obj.title}</Text>
+        <Text style={{color:"black"}}>{obj.categories}</Text>
+        <Text style={{color:"black"}}>{obj.price}</Text>
+      </View>
+    } 
+    )
+  )
+
+
+ }
+ const Sofa = ({navigation}) => {
+  const dataRe2  = data.filter(function(item) {
+    return item.categories == "sofa";
+  });
+  
+  return(
+    dataRe2.map( (obj) => {
+      return <View key={obj.title}>
+        <Text style={{color:"black"}}>{obj.title}</Text>
+        <Text style={{color:"black"}}>{obj.categories}</Text>
+        <Text style={{color:"black"}}>{obj.price}</Text>
+      </View>
+    } 
+    )
   )
 }
-const Product3 = ({navigation}) => {
+const WallPaper = ({navigation}) => {
+  const dataRe3  = data.filter(function(item) {
+    return item.categories == "wallpaper";
+  });
+  
   return(
-    <View>
-      <Text>안녕3</Text>
-    </View>
+    dataRe3.map( (obj) => {
+      return <View key={obj.title}>
+        <Text style={{color:"black"}}>{obj.title}</Text>
+        <Text style={{color:"black"}}>{obj.categories}</Text>
+        <Text style={{color:"black"}}>{obj.price}</Text>
+      </View>
+    } 
+    )
   )
 }
 
@@ -126,19 +173,19 @@ const App: () => Node = () => {
        options={{headerShown: false}}
        />
         <Stack.Screen 
-       name="Product1"
-       component={Product1}
+       name="Paint"
+       component={Paint}
        options={{headerShown: false}}
        />
        
        <Stack.Screen 
-       name="Product2"
-       component={Product2}
+       name="Sofa"
+       component={Sofa}
        options={{headerShown: false}}
        />
         <Stack.Screen 
-       name="Product3"
-       component={Product3}
+       name="WallPaper"
+       component={WallPaper}
        options={{headerShown: false}}
        />
        
