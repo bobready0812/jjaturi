@@ -26,7 +26,8 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Image
+  Image,
+  StatusBar
 } from 'react-native'; 
 
 import {
@@ -36,6 +37,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import SearchComponent from './SearchComponent';
 
 
 
@@ -47,109 +50,43 @@ import {
 
 
  const data = [
+  { "1" : 
   {
-    title: "product1",
-    categories:"paint",
-    price:2000
-  },
+    content:"airpods",
+    name:"airpod",
+    price:20000,
+
+   }
+   },
+   { "2" : 
   {
-    title: "product10",
-    categories:"paint",
-    price:2000
-  },
-  
+    content:"sofa",
+    name:"sofa",
+    price:200002,
 
+   }
+   },
+   { "3" : 
   {
-    title: "product2",
-    categories:"sofa",
-    price:10000
-  } ,
+    content:"wallpaper",
+    name:"wallpapers",
+    price:20000123,
+
+   }
+   },
+
+   { "4" : 
   {
-    title: "product12",
-    categories:"sofa",
-    price:10000
-  } ,
-   {
-    title: "product3",
-    categories:"wallpaper",
-    price:20000
-  ,},
-  {
-    title: "product20",
-    categories:"wallpaper",
-    price:20000
-  ,}]
+    content:"paint",
+    name:"paint",
+    price:2000012,
+
+   }
+   },
+ ]
 
 
- const HomeScreen = ({navigation}) => {
-   return(
-     <View>
-    <TouchableOpacity onPress={() => navigation.navigate('Paint')}>
-       <Text>페인트</Text>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('Sofa')}>
-    <Text>소파</Text>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('WallPaper')}>
-    <Text>벽지</Text>
-    </TouchableOpacity>
-    </View>
-   )
- }
-
- const  Paint = ({navigation}) => {
-
-  const dataRe1  = data.filter(function(item) {
-    return item.categories == "paint";
-  });
-  
-  return(
-    dataRe1.map( (obj) => {
-      return <View key={obj.title}>
-        <Text style={{color:"black"}}>{obj.title}</Text>
-        <Text style={{color:"black"}}>{obj.categories}</Text>
-        <Text style={{color:"black"}}>{obj.price}</Text>
-      </View>
-    } 
-    )
-  )
-
-
- }
- const Sofa = ({navigation}) => {
-  const dataRe2  = data.filter(function(item) {
-    return item.categories == "sofa";
-  });
-  
-  return(
-    dataRe2.map( (obj) => {
-      return <View key={obj.title}>
-        <Text style={{color:"black"}}>{obj.title}</Text>
-        <Text style={{color:"black"}}>{obj.categories}</Text>
-        <Text style={{color:"black"}}>{obj.price}</Text>
-      </View>
-    } 
-    )
-  )
-}
-const WallPaper = ({navigation}) => {
-  const dataRe3  = data.filter(function(item) {
-    return item.categories == "wallpaper";
-  });
-  
-  return(
-    dataRe3.map( (obj) => {
-      return <View key={obj.title}>
-        <Text style={{color:"black"}}>{obj.title}</Text>
-        <Text style={{color:"black"}}>{obj.categories}</Text>
-        <Text style={{color:"black"}}>{obj.price}</Text>
-      </View>
-    } 
-    )
-  )
-}
-
-
+ 
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -163,36 +100,13 @@ const App: () => Node = () => {
 
 
 
+
   return (
-   <NavigationContainer>
-     <Stack.Navigator>
-       
-       <Stack.Screen 
-       name="home"
-       component={HomeScreen}
-       options={{headerShown: false}}
-       />
-        <Stack.Screen 
-       name="Paint"
-       component={Paint}
-       options={{headerShown: false}}
-       />
-       
-       <Stack.Screen 
-       name="Sofa"
-       component={Sofa}
-       options={{headerShown: false}}
-       />
-        <Stack.Screen 
-       name="WallPaper"
-       component={WallPaper}
-       options={{headerShown: false}}
-       />
-       
-       
-     </Stack.Navigator>
-   </NavigationContainer>
-  
+   <>
+    <StatusBar backgroundColor="#00876C" />
+    <SearchComponent />
+   </>
+   
   );
 };
 
