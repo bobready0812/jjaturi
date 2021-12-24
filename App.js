@@ -92,16 +92,34 @@ import axios from 'axios';
  
 
 const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+ const [filterdData, setfilterdData] = useState([]);
+ const [masterData, setmasterData] = useState([]);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-  
+
+ useEffect(() => {
+   fetchPosts();  
+   return () => {
+
+   }
+ }, [])
+ const fetchPosts = () => {
+   const apiURL = 'https://jsonplaceholder.typicode.com/posts';
+   fetch(apiURL).then((response)=> response.json()).then((responseJson)=> {
+     setfilterdData(responseJson);
+     setmasterData(responseJson);
+   }).catch((error) => {
+     console.error(error);
+   })
+ }  
 
 
 
   return (
+    <SafeAreaView style={{flex:1}}>
+      <View style={styles.container}>
+        <FlatList
+      </View>
+    </SafeAreaView>
    
    
   );
@@ -109,19 +127,9 @@ const App: () => Node = () => {
 
 const styles = StyleSheet.create({
 container:{
-  flex:1,
+ backgroundColor:'white',
 },
-stuck:{
-backgroundColor:"grey",
-flex:0.01
-},
- 
- product: {
- flex:1,
- backgroundColor:"#FFF",
- alignItems:"center",
- justifyContent:"center"
- }
+
 
 });
 
