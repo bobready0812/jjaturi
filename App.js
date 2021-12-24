@@ -27,7 +27,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   Image,
-  StatusBar
+  StatusBar,
+  FlatList
 } from 'react-native'; 
 
 import {
@@ -43,8 +44,10 @@ import SearchComponent from './SearchComponent';
 
 
 
+
  import profile from './assets/피카츄.jpg'; 
-  
+import axios from 'axios';
+
 
  const Stack = createNativeStackNavigator();
 
@@ -98,14 +101,8 @@ const App: () => Node = () => {
 
 
 
-
-
-
   return (
-   <>
-    <StatusBar backgroundColor="#00876C" />
-    <SearchComponent />
-   </>
+   
    
   );
 };
