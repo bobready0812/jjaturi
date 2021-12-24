@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     SafeAreaView,
     ScrollView,
@@ -20,6 +20,9 @@ import {
 
 
 const SearchComponent = () => { 
+
+
+    const [term, setTerm] = useState("");
     return(
         
         <View style={styles.searchWrapperStyle}>
@@ -28,6 +31,10 @@ const SearchComponent = () => {
             placeholder="Search"
              placeholderTextColor="white" 
              style={styles.searchInputStyle} 
+             value={term}
+             onChangeText={(nexText) => {
+                 setTerm(newText); 
+             }}
             />
           
         </View>
