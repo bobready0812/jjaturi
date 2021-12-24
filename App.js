@@ -93,7 +93,8 @@ import axios from 'axios';
 
 const App: () => Node = () => {
  const [filterdData, setfilterdData] = useState([]);
- const [masterData, setmasterData] = useState([]);
+ const [masterData, setmasterData] = useState([]); 
+ const [search, setSearch] = useState('');
 
 
  useEffect(() => {
@@ -112,23 +113,77 @@ const App: () => Node = () => {
    })
  }  
 
+const ItemView = ({item}) => {
+  return (
+    <Text>
+      {item.id}{'. '}{item.title.toUpperCase()}
+    </Text>
+  )
+}
+
+const ItemSeparatorView = () => {
+  return(
+    <View style={{height: 0.5, width: '100%', backgroundColor:'#c8c8c8'}}>
+      
+    </View>
+  )
+}
+
+const searchFilter = (text) => {
+  if(text) {
+    const newData = masterData.filter((item) => {
+      const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    setfilterdData(newData);
+    setSearch(text);
+  } else {
+    setfilterdData(masterData);
+    setSearch(text);
+  }
+  }
 
 
   return (
     <SafeAreaView style={{flex:1}}>
       <View style={styles.container}>
-        <FlatList
+        <TextInput
+        style={styles.textInputStyle}
+        value={search}
+        placeholder="search Here"
+        underlineColorAndroid="transparent"
+        onChangeText={(text) => searchFilter(text)}
+        />
+        <FlatList 
+        data={filterdData}
+        keyExtractor={(item, index) => index.toString()}
+        ItemSeparatorComponent={ItemSeparatorView}
+        renderItem={ItemView}
+        />
       </View>
     </SafeAreaView>
    
    
   );
-};
+  };
 
 const styles = StyleSheet.create({
 container:{
  backgroundColor:'white',
 },
+itemStyle: {
+  padding: 15
+},
+textInputStyle : {
+  height: 60,
+  borderWidth: 1,
+  paddingLeft: 20,
+  margin:5,
+  borderColor:'#009688',
+  backgroundColor:'white'
+
+}
 
 
 });
