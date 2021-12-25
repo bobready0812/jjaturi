@@ -58,6 +58,8 @@ import axios from 'axios';
     content:"airpods",
     name:"airpod",
     price:20000,
+    id:1,
+    title:"airpod2세대"
 
    }
    },
@@ -66,6 +68,8 @@ import axios from 'axios';
     content:"sofa",
     name:"sofa",
     price:200002,
+    id:2,
+    title:"이케아 소파"
 
    }
    },
@@ -74,6 +78,8 @@ import axios from 'axios';
     content:"wallpaper",
     name:"wallpapers",
     price:20000123,
+    id:3,
+    title:"삐까뻔적벽지"
 
    }
    },
@@ -83,6 +89,8 @@ import axios from 'axios';
     content:"paint",
     name:"paint",
     price:2000012,
+    id:4,
+    title:"금광페인트"
 
    }
    },
