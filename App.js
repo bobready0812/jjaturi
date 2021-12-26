@@ -53,7 +53,7 @@ import axios from 'axios';
 
 
  const data = [
-  { "1" : 
+ 
   {
     content:"airpods",
     name:"airpod",
@@ -61,9 +61,9 @@ import axios from 'axios';
     id:1,
     title:"airpod2세대"
 
-   }
    },
-   { "2" : 
+   
+   
   {
     content:"sofa",
     name:"sofa",
@@ -71,9 +71,9 @@ import axios from 'axios';
     id:2,
     title:"이케아 소파"
 
-   }
    },
-   { "3" : 
+   
+ 
   {
     content:"wallpaper",
     name:"wallpapers",
@@ -81,10 +81,10 @@ import axios from 'axios';
     id:3,
     title:"삐까뻔적벽지"
 
-   }
    },
+   
 
-   { "4" : 
+  
   {
     content:"paint",
     name:"paint",
@@ -93,7 +93,7 @@ import axios from 'axios';
     title:"금광페인트"
 
    }
-   },
+   ,
  ]
 
 
@@ -112,13 +112,13 @@ const App: () => Node = () => {
    }
  }, [])
  const fetchPosts = () => {
-   const apiURL = 'https://jsonplaceholder.typicode.com/posts';
-   fetch(apiURL).then((response)=> response.json()).then((responseJson)=> {
-     setfilterdData(responseJson);
-     setmasterData(responseJson);
-   }).catch((error) => {
-     console.error(error);
-   })
+  //  const apiURL = 'https://jsonplaceholder.typicode.com/posts';
+  //  fetch(apiURL).then((response)=> response.json()).then((responseJson)=> {
+     setfilterdData(data);
+     setmasterData(data);
+  //  }).catch((error) => {
+  //    console.error(error);
+  //  })
  }  
 
 const ItemView = ({item}) => {
