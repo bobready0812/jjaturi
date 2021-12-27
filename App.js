@@ -90,7 +90,7 @@ import axios from 'axios';
     name:"paint",
     price:2000012,
     id:4,
-    title:"금광페인트"
+    title:"paint"
 
    }
    ,
