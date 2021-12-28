@@ -169,6 +169,7 @@ const searchFilter = (text) => {
         ItemSeparatorComponent={ItemSeparatorView}
         renderItem={ItemView}
         />
+        <Button onPress={() => searchFilter(text)}></Button>
       </View>
     </SafeAreaView>
    
