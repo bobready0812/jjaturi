@@ -123,9 +123,11 @@ const App: () => Node = () => {
 
 const ItemView = ({item}) => {
   return (
+    <View style={{borderRadius:5,flex:1,borderColor:"red"}}>
     <Text>
       {item.id}{'. '}{item.title.toUpperCase()}
     </Text>
+    </View>
   )
 }
 
