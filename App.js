@@ -123,7 +123,7 @@ const App: () => Node = () => {
 
 const ItemView = ({item}) => {
   return (
-    <View style={{borderRadius:5,flex:1,borderColor:"red"}}>
+    <View style={{borderRadius:5,flex:1,borderColor:"red",backgroundColor:"green",borderWidth:10}}>
     <Text>
       {item.id}{'. '}{item.title.toUpperCase()}
     </Text>
@@ -171,7 +171,7 @@ const searchFilter = (text) => {
         ItemSeparatorComponent={ItemSeparatorView}
         renderItem={ItemView}
         />
-        <Button onPress={() => searchFilter(text)}></Button>
+        
       </View>
     </SafeAreaView>
    
