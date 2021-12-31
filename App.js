@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -26,177 +19,65 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  Image
   Image,
-  StatusBar,
-  FlatList
+  StatusBar
 } from 'react-native'; 
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import SearchComponent from './SearchComponent';
+const data = []
 
 
 
+const HomeScreen = ({navigation}) => {
+  return(
+    <View>
+   <TouchableOpacity onPress={() => navigation.navigate('Paint')}>
+      <Text>페인트</Text>
+   </TouchableOpacity>
+   <TouchableOpacity onPress={() => navigation.navigate('Sofa')}>
+   <Text>소파</Text>
+   </TouchableOpacity>
+   <TouchableOpacity onPress={() => navigation.navigate('WallPaper')}>
+   <Text>벽지</Text>
+   </TouchableOpacity>
+   </View>
+  )
+}
 
-
- import profile from './assets/피카츄.jpg'; 
-import axios from 'axios';
-
-
- const Stack = createNativeStackNavigator();
-
-
- const data = [
- 
-  {
-    content:"airpods",
-    name:"airpod",
-    price:20000,
-    id:1,
-    title:"airpod2세대"
-
-   },
-   
-   
-  {
-    content:"sofa",
-    name:"sofa",
-    price:200002,
-    id:2,
-    title:"이케아 소파"
-
-   },
-   
- 
-  {
-    content:"wallpaper",
-    name:"wallpapers",
-    price:20000123,
-    id:3,
-    title:"삐까뻔적벽지"
-
-   },
-   
-
-  
-  {
-    content:"paint",
-    name:"paint",
-    price:2000012,
-    id:4,
-    title:"paint"
-
-   }
-   ,
- ]
-
-
- 
 
 const App: () => Node = () => {
- const [filterdData, setfilterdData] = useState([]);
- const [masterData, setmasterData] = useState([]); 
- const [search, setSearch] = useState('');
-
-
- useEffect(() => {
-   fetchPosts();  
-   return () => {
-
-   }
- }, [])
- const fetchPosts = () => {
-  //  const apiURL = 'https://jsonplaceholder.typicode.com/posts';
-  //  fetch(apiURL).then((response)=> response.json()).then((responseJson)=> {
-     setfilterdData(data);
-     setmasterData(data);
-  //  }).catch((error) => {
-  //    console.error(error);
-  //  })
- }  
-
-const ItemView = ({item}) => {
-  return (
-    <View style={{borderRadius:5,flex:1,borderColor:"red",backgroundColor:"green",borderWidth:10}}>
-    <Text>
-      {item.id}{'. '}{item.title.toUpperCase()}
-    </Text>
-    </View>
-  )
-}
-
-const ItemSeparatorView = () => {
-  return(
-    <View style={{height: 0.5, width: '100%', backgroundColor:'#c8c8c8'}}>
-      
-    </View>
-  )
-}
-
-const searchFilter = (text) => {
-  if(text) {
-    const newData = masterData.filter((item) => {
-      const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    });
-    setfilterdData(newData);
-    setSearch(text);
-  } else {
-    setfilterdData(masterData);
-    setSearch(text);
-  }
-  }
-
-
-  return (
-    <SafeAreaView style={{flex:1}}>
-      <View style={styles.container}>
-        <TextInput
-        style={styles.textInputStyle}
-        value={search}
-        placeholder="search Here"
-        underlineColorAndroid="transparent"
-        onChangeText={(text) => searchFilter(text)}
-        />
-        <FlatList 
-        data={filterdData}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={ItemSeparatorView}
-        renderItem={ItemView}
-        />
-        
-      </View>
-    </SafeAreaView>
-   
-   
-  );
+  const isDarkMode = useColorScheme() === 'dark';
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+  
+
+
+
+
+  return (<>
+    <StatusBar backgroundColor="#00876C" />
+    <SearchComponent />
+   </>
+
+  );
+};
 
 const styles = StyleSheet.create({
 container:{
- backgroundColor:'white',
+  flex:1,
 },
-itemStyle: {
-  padding: 15
+stuck:{
+backgroundColor:"grey",
+flex:0.01
 },
-textInputStyle : {
-  height: 60,
-  borderWidth: 1,
-  paddingLeft: 20,
-  margin:5,
-  borderColor:'#009688',
-  backgroundColor:'white'
-
-}
-
-
+ 
+ product: {
+ flex:1,
+ backgroundColor:"#FFF",
+ alignItems:"center",
+ justifyContent:"center"
+ }
 });
-
 export default App;
