@@ -25,7 +25,18 @@ import {
 } from 'react-native'; 
 
 
-const data = []
+const data = [
+  {name: "sofa", 
+   price:2000,
+   id:1
+  
+  }, 
+  {name: "wallpaper",
+   price: 20000,
+   id:2,
+    
+  }
+]
 
 
 
@@ -46,6 +57,7 @@ const HomeScreen = ({navigation}) => {
 }
 
 
+
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
@@ -59,6 +71,7 @@ const App: () => Node = () => {
   return (<>
     <StatusBar backgroundColor="#00876C" />
     <SearchComponent />
+
    </>
 
   );
